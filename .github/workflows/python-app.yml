@@ -26,7 +26,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Genarate Report
       run: |
-        python RateScanner.py
+        python RateGenerator.py
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
