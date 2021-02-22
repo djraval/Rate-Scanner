@@ -4,22 +4,29 @@
 <head>
     <meta charset="utf-8">
     <title>Rate Scanner Releases</title>
-    <script>
-        var xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
+</head>
 
-        xhr.addEventListener("readystatechange", function() {
-            if(this.readyState === 4) {
-                console.log(this.responseText);
+<body>
+    <h2>Latest Release</h2>
+    &nbsp;
+    <span id="release"></span>
+
+    <script>
+        var download_link = ""
+        var publish_date = ""
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                publish_date = this.response['published_at']
+                console.log(publish_date)
+                download_link = this.response['assets'][0]['browser_download_url']
+                console.log(download_link);
+                document.getElementById("release").innerHTML = publish_date.link(download_link)
             }
         });
         xhr.open("GET", "https://api.github.com/repos/djraval/Rate-Scanner/releases/latest");
         xhr.send();
     </script>
-</head>
-
-<body>
-    <h2>Latest Release</h2>
-    <span id="fooBar">&nbsp;</span>
 </body>
 </html>
