@@ -106,7 +106,7 @@ def brokerage_report(writer):
 
 
 def main():
-    writer = pd.ExcelWriter('RateScanner_{current_date}.xlsx'.format(current_date = datetime.today().strftime('%Y-%m-%d')), engine='xlsxwriter')
+    writer = pd.ExcelWriter('RateScanner.xlsx', engine='xlsxwriter')
 
     retail_report(writer)
 
